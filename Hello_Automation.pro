@@ -28,7 +28,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 TARGET = Hello_Automation
-
-osx: {
-    DESTDIR = "Hello_Automation.app"/Contents/MacOs/
-}
