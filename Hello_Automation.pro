@@ -33,6 +33,8 @@ macx {
 
     DEFINES += MAC
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+    QMAKE_RPATHDIR += $$PWD/../Frameworks/
+    QMAKE_RPATHDIR += $$PWD/../../Frameworks/    
 
     LIBS_PRIVATE += -framework Cocoa -lz
     LIBS_PRIVATE += -framework CoreFoundation -lz
