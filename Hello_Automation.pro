@@ -53,7 +53,7 @@ macx {
     #LIBS += -L"/usr/local/lib/" -llcms2
 
     #LIBS += -lOpenImageIO
-    LIBS += -L"$ORIGIN/../Frameworks" -lOpenImageIO
+    LIBS += -L"$$ORIGIN/../Frameworks" -lOpenImageIO
 
     #INCLUDEPATH += "/usr/local/include/zlib"
     #LIBS += -L"/usr/local/lib" -lz
