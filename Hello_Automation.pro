@@ -28,3 +28,34 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 TARGET = Hello_Automation
+
+macx {
+
+    DEFINES += MAC
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+
+    LIBS_PRIVATE += -framework Cocoa -lz
+    LIBS_PRIVATE += -framework CoreFoundation -lz
+
+    CONFIG(debug,debug|release) {
+        message( debug )
+        QMAKE_CXXFLAGS_DEBUG += -stdlib=libc++  -std=c++11
+        QMAKE_LFLAGS_DEBUG= -lc++
+    } else {
+        message( release ) DEFINES += NDEBUG
+        QMAKE_CXXFLAGS_RELEASE += -O3 -stdlib=libc++  -std=c++11#-lstdc++
+        QMAKE_LFLAGS_RELEASE += -lc++
+    }
+
+    INCLUDEPATH += "/usr/local/include"
+    #LIBS += -L"/usr/local/lib/" -llcms2
+
+    #LIBS += -lOpenImageIO
+    LIBS += -L"/usr/local/lib" -lOpenImageIO
+
+    #INCLUDEPATH += "/usr/local/include/zlib"
+    #LIBS += -L"/usr/local/lib" -lz
+
+    #INCLUDEPATH += "/usr/local/include/minizip"
+    #LIBS += -L"/usr/local/lib" -lminizip
+}
