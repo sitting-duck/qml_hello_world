@@ -53,7 +53,7 @@ macx {
     #LIBS += -L"/usr/local/lib/" -llcms2
 
     #LIBS += -lOpenImageIO
-    LIBS += -L"/usr/local/lib" -lOpenImageIO
+    LIBS += -L"@rpath" -lOpenImageIO
 
     #INCLUDEPATH += "/usr/local/include/zlib"
     #LIBS += -L"/usr/local/lib" -lz
