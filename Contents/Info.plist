@@ -21,20 +21,23 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.yourcompany.Hello-Automation</string>
 	<key>CFBundleDocumentTypes</key>
-	<dict>   
-   <key>CFBundleTypeName</key>
-   <string>Topaz Studio Project File</string>
-   <key>CFBundleTypeIconFiles</key>
-       <array>
-           <string>TopazStudiobeta.icns</string>
-       </array>
-   <key>LSItemContentTypes</key>
-       <array>
-           <string>com.topazlabs.tsp</string>
-       </array>
-   <key>LSHandlerRank</key>
-   <string>Topaz Labs</string>
-
-</dict>
+		<dict>   
+		   <key>CFBundleTypeName</key>
+		   <string>Topaz Studio Project File</string>
+		   <key>CFBundleTypeIconFiles</key>
+		       <array>
+		           <string>TopazStudiobeta.icns</string>
+		       </array>
+		   <key>LSItemContentTypes</key>
+		       <array>
+		           <string>com.topazlabs.tsp</string>
+		       </array>
+		   <key>CFBundleTypeExtensions</key>
+		   	   <array>
+		   	   		<string>tsp</string>
+		   	   </array>
+		   <key>LSHandlerRank</key>
+		   <string>Topaz Labs</string>
+		</dict>
 </dict>
 </plist>
