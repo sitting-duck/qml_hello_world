@@ -7,10 +7,15 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
-    MainForm {
+    //MainForm {
+    //    anchors.fill: parent
+    //    mouseArea.onClicked: {
+    //        console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
+    //    }
+    //}
+
+    Rectangle {
         anchors.fill: parent
-        mouseArea.onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-        }
+        color: "red"
     }
 }
