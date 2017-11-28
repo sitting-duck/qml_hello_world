@@ -61,3 +61,6 @@ macx {
     #INCLUDEPATH += "/usr/local/include/minizip"
     #LIBS += -L"/usr/local/lib" -lminizip
 }
+
+OTHER_FILES += \
+    RectEllipseTool.qml

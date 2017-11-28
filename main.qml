@@ -7,15 +7,6 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
-    //MainForm {
-    //    anchors.fill: parent
-    //    mouseArea.onClicked: {
-    //        console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-    //    }
-    //}
+    RectEllipseTool {}
 
-    Rectangle {
-        anchors.fill: parent
-        color: "red"
-    }
 }
