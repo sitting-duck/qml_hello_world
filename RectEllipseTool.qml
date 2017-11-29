@@ -10,10 +10,10 @@ OverlayBase {
     }
 
     Rectangle {
-     ColumnLayout {
-        anchors.fill: parent
-        Text { text: "canvas w: " + canvas.width + "h: " + canvas.height }
-     }
+        ColumnLayout {
+            anchors.fill: parent
+            Text { text: "canvas w: " + canvas.width + "h: " + canvas.height }
+        }
 
     }
 
@@ -21,6 +21,7 @@ OverlayBase {
         id: canvas
         anchors.fill: parent
         property var controlPoints_cartesian: [Qt.point(1, 0), Qt.point(0, 0.5), Qt.point(-1, 0), Qt.point(0, -0.5)]
+        property var controlPoints_pixel: [cartesiantoPixelPoint(Qt.point(1, 0)), cartesiantoPixelPoint(Qt.point(0, 0.5)), cartesiantoPixelPoint(Qt.point(-1, 0)), cartesiantoPixelPoint(Qt.point(0, -0.5))]
 
         //@ash: say what this does
         function cartesiantoPixelPoint(cartesianPoint) {
@@ -37,6 +38,7 @@ OverlayBase {
         }
 
         onPaint: {
+
             var ctx = getContext("2d");
             var lineWidth = 3;
 
@@ -44,22 +46,48 @@ OverlayBase {
             var y = canvas.height/2 - 4;
             var height = 8;
             var width = 8;
-//            ctx.ellipse(x, y, width, height);
-//            ctx.stroke();
+            //            ctx.ellipse(x, y, width, height);
+
+            //            ctx.stroke();
 
             ctx.beginPath();
-            var firstPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[0]);
-            var nextPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[1]);
-            ctx.moveTo(firstPixelPoint.x, firstPixelPoint.y);
-            ctx.lineTo(nextPixelPoint.x, nextPixelPoint.y);
-            ctx.stroke();
-            for(var i = 0; i < controlPoints_cartesian.length; i++) {
-                nextPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[i]);
-                ctx.lineTo(nextPixelPoint.x, nextPixelPoint.y);
-                ctx.moveTo(nextPixelPoint.x, nextPixelPoint.y);
-                ctx.stroke();
+                        var firstPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[0]);
+            //            var nextPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[1]);
+//                        ctx.moveTo(firstPixelPoint.x, firstPixelPoint.y);
+            //            ctx.strokeStyle = mahColors[0];
+            //            ctx.ellipse(firstPixelPoint.x, firstPixelPoint.y, 8, 8);
+//                        ctx.lineTo(canvas.controlPoints_cartesian[1].x, canvas.controlPoints_cartesian[1].y);
+            //            ctx.stroke();
+            //            ctx.restore();
 
-            }
+            //            for(var i = 0; i < controlPoints_cartesian.length; i++) {
+
+            //                var nextPixelPoint = canvas.cartesiantoPixelPoint(canvas.controlPoints_cartesian[i]);
+            //                ctx.lineTo(nextPixelPoint.x, nextPixelPoint.y);
+            //                ctx.moveTo(nextPixelPoint.x, nextPixelPoint.y);
+            //                ctx.stroke();
+            //                ctx.restore();
+            //            }
+
+            //            ctx.lineTo(canvas.controlPoints_cartesian[3]);
+
+
+            ctx.moveTo(canvas.controlPoints_pixel[0].x, canvas.controlPoints_pixel[0].y);
+            ctx.lineTo(canvas.controlPoints_pixel[1].x, canvas.controlPoints_pixel[1].y);
+            ctx.stroke();
+
+            ctx.moveTo(canvas.controlPoints_pixel[1].x, canvas.controlPoints_pixel[1].y);
+            ctx.lineTo(canvas.controlPoints_pixel[2].x, canvas.controlPoints_pixel[2].y);
+            ctx.stroke();
+
+            ctx.moveTo(canvas.controlPoints_pixel[2].x, canvas.controlPoints_pixel[2].y);
+            ctx.lineTo(canvas.controlPoints_pixel[3].x, canvas.controlPoints_pixel[3].y);
+            ctx.stroke();
+
+            ctx.moveTo(canvas.controlPoints_pixel[3].x, canvas.controlPoints_pixel[3].y);
+            ctx.lineTo(canvas.controlPoints_pixel[0].x, canvas.controlPoints_pixel[0].y);
+            ctx.stroke();
+
         }
 
     }

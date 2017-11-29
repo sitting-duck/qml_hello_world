@@ -15,7 +15,7 @@ Item {
             "normalized_cartesian" : true
         },
         "grid" : {
-            "visible" : true,
+            "visible" : false,
             "rows" : 8,
             "columns" : 8,
             "color" : "#00FF00"
@@ -54,6 +54,7 @@ Item {
         property int rowHeight: _top.height/_top.settings.grid.rows
         model: _top.settings.grid.rows - 1
         delegate: Rectangle {
+            visible: _top.settings.grid.visible
             color: _top.settings.grid.color
             width: _top.width
             height: _top.settings.axisPixelWidth
@@ -66,6 +67,7 @@ Item {
         id: columnDividers
         model: _top.settings.grid.columns - 1
         delegate: Rectangle {
+            visible: _top.settings.grid.visible
             color: _top.settings.grid.color
             width: _top.settings.axisPixelWidth
             height:_top.height
