@@ -2,8 +2,8 @@
 #include <QQmlApplicationEngine>
 
 #ifdef _WIN32
-#include "../../zlib/include/contrib/minizip/zip.h"
-#include "../../zlib/include/contrib/minizip/unzip.h"
+//#include "../../zlib/include/contrib/minizip/zip.h"
+//#include "../../zlib/include/contrib/minizip/unzip.h"
 #else
 #include "zlib.h"
 //#include "/usr/local/include/minizip/zip.h"

@@ -5,21 +5,22 @@ Item {
     id: _top
 
     property var settings:  {
-                                "showAxes" : true,
-                                "axisColor" : "#FF0000",
-                                "axisPixelWidth" : 3,
-                                "axisOpacity" : 0.3,
-                                "showMetrics" : true,
-                                "metric" :  {
-                                                "pixel" : true,
-                                                "normalized_cartesian" : true
-                                            },
-                                "grid" : {
-                                            "visible" : true,
-                                            "rows" : 8,
-                                            "columns" : 8
-                                         },
-                            }
+        "showAxes" : true,
+        "axisColor" : "#FF0000",
+        "axisPixelWidth" : 3,
+        "axisOpacity" : 0.3,
+        "showMetrics" : true,
+        "metric" :  {
+            "pixel" : true,
+            "normalized_cartesian" : true
+        },
+        "grid" : {
+            "visible" : true,
+            "rows" : 8,
+            "columns" : 8,
+            "color" : "#00FF00"
+        },
+    }
 
     anchors.fill: parent
 
@@ -48,28 +49,28 @@ Item {
         opacity: _top.settings.axisOpacity
     }
 
-    Rectangle {
-        id: grid
-        color: "transparent"
-        anchors.fill: parent
-
-        Repeater {
-            id: rowDividers
-            property int rowHeight: _top.height/_top.settings.grid.rows
-            model: 5//_top.settings.grid.rows - 1
-            delegate: Rectangle {
-                width: _top.width
-                height: 3//_top.settings.axisPixelWidth
-            }
+    Repeater {
+        id: rowDividers
+        property int rowHeight: _top.height/_top.settings.grid.rows
+        model: _top.settings.grid.rows - 1
+        delegate: Rectangle {
+            color: _top.settings.grid.color
+            width: _top.width
+            height: _top.settings.axisPixelWidth
+            x: 0
+            y: (_top.height/_top.settings.grid.rows)*(index+1) - _top.settings.axisPixelWidth/2
         }
+    }
 
-        Repeater {
-            id: columnDividers
-            model: _top.settings.grid.columns - 1
-            delegate: Rectangle {
-                width: _top.settings.axisPixelWidth
-                height:_top.height
-            }
+    Repeater {
+        id: columnDividers
+        model: _top.settings.grid.columns - 1
+        delegate: Rectangle {
+            color: _top.settings.grid.color
+            width: _top.settings.axisPixelWidth
+            height:_top.height
+            x: (_top.width/_top.settings.grid.columns)*(index+1) - _top.settings.axisPixelWidth/2
+            y: 0
         }
     }
 }
