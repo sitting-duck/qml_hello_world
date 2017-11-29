@@ -63,4 +63,5 @@ macx {
 }
 
 OTHER_FILES += \
-    RectEllipseTool.qml
+    RectEllipseTool.qml \
+    OverlayBase.qml

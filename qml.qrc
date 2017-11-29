@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>RectEllipseTool.qml</file>
+        <file>OverlayBase.qml</file>
     </qresource>
 </RCC>
