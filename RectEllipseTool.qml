@@ -9,14 +9,6 @@ OverlayBase {
         id: _private
     }
 
-    Rectangle {
-        ColumnLayout {
-            anchors.fill: parent
-            Text { text: "canvas w: " + canvas.width + "h: " + canvas.height }
-        }
-
-    }
-
     Canvas {
         id: canvas
         anchors.fill: parent

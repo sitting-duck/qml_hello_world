@@ -1,16 +1,20 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.3
 
 Item {
 
     id: _top
 
+    anchors.fill: parent
+
     property var settings:  {
         "showAxes" : true,
-        "axisColor" : "#FF0000",
-        "axisPixelWidth" : 3,
-        "axisOpacity" : 0.3,
-        "showMetrics" : true,
-        "metric" :  {
+                "axisColor" : "#FF0000",
+                "axisPixelWidth" : 3,
+                "axisOpacity" : 0.3,
+                "showMetrics" : true,
+                "metric" :  {
             "pixel" : true,
             "normalized_cartesian" : true
         },
@@ -22,10 +26,30 @@ Item {
         },
     }
 
-    anchors.fill: parent
-
     property int centerX: _top.width/2
     property int centerY: _top.height/2
+
+    ExclusiveGroup { id: buttonGroup }
+    Rectangle {
+        width: buttonsRowLayout.implicitWidth
+        height: buttonsRowLayout.implicitHeight
+        RowLayout {
+            id: buttonsRowLayout
+            Repeater {
+
+                model: 4
+                delegate: Button {
+                    width: 20
+                    height: 10
+                    exclusiveGroup: buttonGroup
+                    Text {
+                        anchors.centerIn: parent
+                        text: "" + index
+                    }
+                }
+            }
+        }
+    }
 
     Rectangle {
         id: xAxis
