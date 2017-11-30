@@ -19,33 +19,37 @@ Item {
             "normalized_cartesian" : true
         },
         "grid" : {
-            "visible" : false,
+            "visible" : true,
             "rows" : 8,
             "columns" : 8,
-            "color" : "#00FF00"
-        },
+            "color" : "#00FF00",
+            "ticks" : true,
+            "tickLength" : 10
+        }
     }
 
     property int centerX: _top.width/2
     property int centerY: _top.height/2
 
     ExclusiveGroup { id: buttonGroup }
-    Rectangle {
+    Item {
+        id: buttonsRowContainerRect
         width: buttonsRowLayout.implicitWidth
         height: buttonsRowLayout.implicitHeight
         RowLayout {
             id: buttonsRowLayout
-            Repeater {
 
+            Repeater {
                 model: 4
                 delegate: Button {
-                    width: 20
-                    height: 10
+
+                    property var textModel: ["cartesian_normal", "cartestian_pixel", "pixel", "normal"]                    
+                    width: parent.width/4
+                    height: 100
                     exclusiveGroup: buttonGroup
-                    Text {
-                        anchors.centerIn: parent
-                        text: "" + index
-                    }
+                    checkable: true
+                    checked: index === 2
+                    text: textModel[index]
                 }
             }
         }
@@ -78,11 +82,23 @@ Item {
         property int rowHeight: _top.height/_top.settings.grid.rows
         model: _top.settings.grid.rows - 1
         delegate: Rectangle {
+            id: rowGridline
+
+            Text {
+                text: rowGridline.y
+                font.pixelSize: rowTextMa.containsMouse ? 15 : 5
+                MouseArea {
+                    id: rowTextMa
+                    anchors.fill: parent
+                    hoverEnabled: true
+                }
+            }
+
             visible: _top.settings.grid.visible
             color: _top.settings.grid.color
-            width: _top.width
+            width: _top.settings.grid.ticks ? _top.settings.grid.tickLength : _top.width
             height: _top.settings.axisPixelWidth
-            x: 0
+            x: _top.settings.grid.ticks ? _top.width/2 - _top.settings.grid.tickLength/2 : 0
             y: (_top.height/_top.settings.grid.rows)*(index+1) - _top.settings.axisPixelWidth/2
         }
     }
@@ -91,12 +107,24 @@ Item {
         id: columnDividers
         model: _top.settings.grid.columns - 1
         delegate: Rectangle {
+            id: columnGridline
+
+            Text {
+                text: columnGridline.x
+                font.pixelSize: columnTextMa.containsMouse ? 15 : 5
+                MouseArea {
+                    id: columnTextMa
+                    anchors.fill: parent
+                    hoverEnabled: true
+                }
+            }
+
             visible: _top.settings.grid.visible
             color: _top.settings.grid.color
             width: _top.settings.axisPixelWidth
-            height:_top.height
+            height:_top.settings.grid.ticks ? _top.settings.grid.tickLength : _top.height
             x: (_top.width/_top.settings.grid.columns)*(index+1) - _top.settings.axisPixelWidth/2
-            y: 0
+            y: _top.settings.grid.ticks ? _top.height/2 - _top.settings.grid.tickLength/2 : 0
         }
     }
 }

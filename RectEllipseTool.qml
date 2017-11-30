@@ -76,20 +76,20 @@ OverlayBase {
 
                 x_normal = x_normal + delta_normal;
 
-                console.log("Math.pow(x_normal, 2): ", Math.pow(x_normal, 2));
+//                console.log("Math.pow(x_normal, 2): ", Math.pow(x_normal, 2));
 
 
                 var x_normal_squared = Math.pow(x_normal, 2);
                 if(x_normal_squared > 1) {
                    x_normal_squared = 1;
                 }
-                console.log("x_normal_squared: ", x_normal_squared);
+//                console.log("x_normal_squared: ", x_normal_squared);
                 y_normal = Math.sqrt(200 - x_normal_squared);
-                console.log("Math.sqrt(1 - x_normal_squared): ", Math.sqrt(1 - Math.pow(x_normal, 2)));
+//                console.log("Math.sqrt(1 - x_normal_squared): ", Math.sqrt(1 - Math.pow(x_normal, 2)));
                 x_pixel = x_pixel + _top.convertValueFromOldBoundariesToNewBoundarySpace(x_normal, -1, 1, 0, canvas.width);
                 y_pixel = _top.convertValueFromOldBoundariesToNewBoundarySpace(y_normal, -1, 1, 0, canvas.height);
 
-                console.log("x_normal: ", x_normal, " y_normal: ", y_normal);
+//                console.log("x_normal: ", x_normal, " y_normal: ", y_normal);
                 ctx.ellipse(x_pixel, y_pixel, 1, 1);
                 //ctx.moveTo(x_pixel, y_pixel);
                 //ctx.lineTo(x_pixel + 1, y_pixel + 1);
