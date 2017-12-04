@@ -7,20 +7,6 @@ OverlayBase {
 
     property point center: Qt.point(0, 0)
 
-    //@ash: say what this does
-    function cartesiantoPixelPoint(cartesianPoint) {
-        var x = _top.convertValueFromOldBoundariesToNewBoundarySpace(cartesianPoint.x, -1, 1, 0, canvas.width);
-        // this might seem backwards, but we have to do this because positive y is down for pixel space in qml objects
-        var y = _top.convertValueFromOldBoundariesToNewBoundarySpace(cartesianPoint.y, -1, 1, canvas.height, 0);
-        return Qt.point(x, y);
-    }
-
-    //@ash: say what this does
-    function convertValueFromOldBoundariesToNewBoundarySpace(valueToConvert, lowOld, HighOld, lowNew, highNew) {
-        var returnValue = (valueToConvert-lowOld) / (HighOld-lowOld) * (highNew-lowNew) + lowNew;
-        return returnValue;
-    }
-
     Item {
         id: _private
     }
@@ -86,8 +72,8 @@ OverlayBase {
 //                console.log("x_normal_squared: ", x_normal_squared);
                 y_normal = Math.sqrt(200 - x_normal_squared);
 //                console.log("Math.sqrt(1 - x_normal_squared): ", Math.sqrt(1 - Math.pow(x_normal, 2)));
-                x_pixel = x_pixel + _top.convertValueFromOldBoundariesToNewBoundarySpace(x_normal, -1, 1, 0, canvas.width);
-                y_pixel = _top.convertValueFromOldBoundariesToNewBoundarySpace(y_normal, -1, 1, 0, canvas.height);
+                x_pixel = x_pixel + _top.convert(x_normal, -1, 1, 0, canvas.width);
+                y_pixel = _top.convert(y_normal, -1, 1, 0, canvas.height);
 
 //                console.log("x_normal: ", x_normal, " y_normal: ", y_normal);
                 ctx.ellipse(x_pixel, y_pixel, 1, 1);
