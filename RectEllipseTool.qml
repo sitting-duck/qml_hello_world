@@ -54,8 +54,8 @@ OverlayBase {
 //            ctx.stroke();
 
 
-            var x_normal = 0; var y_normal = 0;
-            var x_pixel = 0; var y_pixel = 0;
+//            var x_normal = 0; var y_normal = 0;
+//            var x_pixel = 0; var y_pixel = 0;
 
 //            while(x_normal < 1) {
 
@@ -87,29 +87,75 @@ OverlayBase {
 
 //            }
 
-            var radius = 40;
-            var center_pixel = Qt.point(_top.width/2, _top.height/2);
-            x_pixel = 0;//center_pixel.x - radius;
-            var h = _top.width/2;
-            var k = _top.height/2;
+//            var x_normal = 0; var y_normal = 0;
+//            var x_pixel = 0; var y_pixel = 0;
+//            //var x_pixel_cartesian = 0; var y_pixel_cartesian = 0;
 
-            while(x_pixel < _top.width) {
+//            var radius = 40;
 
-                var r_squared = Math.pow(radius, 2);
-                var x_squared = Math.pow(x_pixel - h, 2);
+//            //var radius_normal = radius/_top.width;
+            
+            
+//            var center_pixel = Qt.point(_top.width/2, _top.height/2);
+//            var center_cartesian_pixel = Qt.point(0, 0);
 
-                if (r_squared > x_squared) {
-                    y_pixel = Math.sqrt(r_squared - x_squared) + k;
-                    console.log("r_squared: ", r_squared, " x_squared: ", x_squared);
-                    console.log("x_pixel: ", x_pixel, " y_pixel: ", y_pixel);
+//            x_pixel = 0;//center_pixel.x - radius;
+//            var h_pixel = _top.width/2;
+//            var k_pixel = _top.height/2;
 
-                    ctx.ellipse(x_pixel, y_pixel, 1, 1);
-                    //ctx.ellipse(x_pixel, _top.height/2, 1, 1);
+//            var h_cartesian_pixel = 0;
+//            var k_cartesian_pixel = 0;
+
+//            while(x_pixel < _top.width) {
+
+//                var r_squared = Math.pow(radius, 2);
+//                var x_squared = Math.pow(x_pixel - h_pixel, 2);
+
+//                if (r_squared > x_squared) {
+//                    y_pixel = Math.sqrt(r_squared - x_squared) + k_pixel;
+//                    y_pixel = Math.round(y_pixel);
+
+//                    y_pixel_cartesian =
+
+//                    ctx.moveTo(x_pixel, y_pixel);
+//                    ctx.lineTo(x_pixel + 1, y_pixel + 1);
+//                    ctx.stroke();
+
+//                    var top_y_pixel = y_pixel - 2*radius;
+//                    ctx.moveTo(x_pixel, top_y_pixel);
+//                    ctx.lineTo(x_pixel, top_y_pixel + 1);
+//                    ctx.stroke();
+//                }
+
+//                x_pixel = x_pixel + 1;
+//            }
+
+            var radius_pixel = 80;
+            var x_start = _top.convert(-radius_pixel, -_top.width/2, _top.width/2, 0, _top.width);
+            var x_end = _top.convert(radius_pixel, -_top.width/2, _top.width/2, 0, _top.width);
+
+            console.log("_top.width: ", _top.width);
+            console.log("x_start: ", x_start, " x_end: ", x_end);
+            var y_pixel_cartesian = 0;
+            for (var x_pixel = x_start; x_pixel < x_end; x_pixel++) {
+
+                var x_pixel_cartesian = _top.convert(x_pixel, 0, _top.width, -_top.width/2, _top.width/2);
+
+                var r_squared = Math.pow(radius_pixel, 2);
+                var x_squared_pixel_cartesian = Math.pow(x_pixel_cartesian, 2);
+                if(r_squared > x_squared_pixel_cartesian) {
+                    console.log("r_squared: ", r_squared, " x_squared: ", x_squared_pixel_cartesian);
+                    var square_difference = Math.sqrt(r_squared - x_squared_pixel_cartesian);
+                    y_pixel_cartesian = _top.convert(square_difference, 0, _top.height, _top.height/2, -_top.height/2);
+                    console.log("y_pixel_cartesian: ", y_pixel_cartesian);
+    //                ctx.moveTo(x_pixel_cartesian, _top.height/2);
+    //                ctx.lineTo(x_pixel_cartesian + 1, _top.height/2);
+                    ctx.moveTo(x_pixel, y_pixel_cartesian);
+                    ctx.lineTo(x_pixel + 1, y_pixel_cartesian + 1);
                     ctx.stroke();
                 }
-
-                x_pixel = x_pixel + 1;
             }
+
 
 
 //            for(var x_pixel = 0; x_pixel < canvas.width - 1; x_pixel++) {

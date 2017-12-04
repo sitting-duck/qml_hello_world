@@ -20,7 +20,7 @@ Item {
     function convert(valueToConvert, lowOld, HighOld, lowNew, highNew) {
         var returnValue = (valueToConvert-lowOld) / (HighOld-lowOld) * (highNew-lowNew) + lowNew;
         return returnValue;
-    }
+    }   
 
     property var settings:  {
         "showAxes" : true,
