@@ -1,3 +1,5 @@
+![screencap](https://github.com/sitting-duck/qml_hello_world/blob/master/img/Screen%20Shot%202017-12-05%20at%2010.20.12%20AM.png)
+
 This application shows a 2D graph.
 
 It has 4 buttons at the top which enable me to easily switch what labels are shown on the x and y axis.
