@@ -6,6 +6,6 @@ Window {
     width: 500
     height: 500
 
-    RectEllipseTool {}
+    //RectEllipseTool {}
 
 }
