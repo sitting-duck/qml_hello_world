@@ -30,12 +30,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 TARGET = Hello_Automation
 
-INCLUDEPATH += "$$PWD/thirdpartylibs/cutelogger/include"
+#INCLUDEPATH += "$$PWD/thirdpartylibs/cutelogger/include"
 
 CONFIG(release, debug|release) {
-    LIBS += -L"$$PWD/thirdpartylibs/cutelogger/libr"
+#    LIBS += -L"$$PWD/thirdpartylibs/cutelogger/libr"
 } else {
-    LIBS += -L"$$PWD/thirdpartylibs/cutelogger/libd"
+#    LIBS += -L"$$PWD/thirdpartylibs/cutelogger/libd"
 }
 
 macx {
@@ -62,7 +62,7 @@ macx {
     #LIBS += -L"/usr/local/lib/" -llcms2
 
     #LIBS += -lOpenImageIO
-    LIBS += -L"/usr/local/lib" -lOpenImageIO
+#    LIBS += -L"/usr/local/lib" -lOpenImageIO
 
     #INCLUDEPATH += "/usr/local/include/zlib"
     #LIBS += -L"/usr/local/lib" -lz

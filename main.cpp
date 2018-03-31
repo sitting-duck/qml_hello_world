@@ -3,7 +3,7 @@
 
 #include "filelogger.h"
 
-FileLogger fileLogger;
+//FileLogger fileLogger; // TO BE CONTINUED
 
 int main(int argc, char *argv[])
 {
