@@ -14,10 +14,11 @@ class Controller : public QObject
 public:
     Controller() {
         Worker* worker = new Worker;
+        workerThread.start();
         worker->moveToThread(&workerThread);
 
         // set up signalling for deletion of the thread
-        connect(&workerThread, SIGNAL(finished()), worker, SLOT(deleteLater()));
+        //connect(&workerThread, SIGNAL(finished()), worker, SLOT(deleteLater()));
 
         // set up signalling for the work to actually be done in the separate thread
         connect(this, SIGNAL(operate(QString)), worker, SLOT(doWork(QString)));
@@ -35,6 +36,7 @@ public slots:
     void handleResults(const QString&);
 
 signals:
+    void finished();
     void operate(const QString&);
 };
 

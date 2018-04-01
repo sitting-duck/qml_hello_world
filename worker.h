@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QThread>
+#include <QDebug>
 
 class Worker : public QObject
 {
@@ -15,6 +16,7 @@ public:
 public slots:
     void doWork(const QString& parameter) {
 
+        qDebug() << "DO WORK";
         QString result;
 
         // do work here
