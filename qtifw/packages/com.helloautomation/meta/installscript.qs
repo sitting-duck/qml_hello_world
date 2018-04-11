@@ -62,6 +62,8 @@ Component.prototype.createOperations = function()
     // call default implementation to actually install the registeredfile
     component.createOperations();
 
+    console.log("test");
+
     var isRegisterFileChecked = component.userInterface("RegisterFileCheckBoxForm").RegisterFileCheckBox.checked;
     if (installer.value("os") === "win") {
         var iconId = 0;
