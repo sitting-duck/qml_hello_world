@@ -1,4 +1,4 @@
-QT += core quick
+QT += core quick widgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     filelogger.cpp \
     worker.cpp \
     controller.cpp \
-    workerthread.cpp
+    workerthread.cpp \
+    imageio.cpp
 
 RESOURCES += qml.qrc
 
@@ -82,4 +83,8 @@ HEADERS += \
     filelogger.h \
     worker.h \
     controller.h \
-    workerthread.h
+    workerthread.h \
+    imageio.h
+
+DISTFILES += \
+    main.qml

@@ -20,6 +20,7 @@ public slots:
         QString result;
 
         // do work here
+        qDebug() << "parameter: " << parameter;
 
         emit resultReady(result);
 
