@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     worker.cpp \
     controller.cpp \
     workerthread.cpp \
-    imageio.cpp
+    imageio.cpp \
+    tabwidget.cpp
 
 RESOURCES += qml.qrc
 
@@ -84,7 +85,8 @@ HEADERS += \
     worker.h \
     controller.h \
     workerthread.h \
-    imageio.h
+    imageio.h \
+    tabwidget.h
 
 DISTFILES += \
     main.qml
