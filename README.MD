@@ -1,4 +1,8 @@
+
 ![screencap](https://github.com/sitting-duck/qml_hello_world/blob/master/img/Screen%20Shot%202017-12-05%20at%2010.20.12%20AM.png)
+
+Here is a link to the video walkthrough for this small code demo
+https://www.youtube.com/watch?v=sY3WZvE9AV8&feature=youtu.be
 
 This application shows a 2D graph.
 
